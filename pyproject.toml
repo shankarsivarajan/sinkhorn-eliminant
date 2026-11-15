@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sinkhorn-eliminant"
+version = "0.1.0"
+description = "Exact determinantal formulas for Sinkhorn/Kruithof limits of matrices and tensors"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Shankar Sivarajan", email = "sivarajn@umich.edu" },
+]
+dependencies = []
+
+[project.optional-dependencies]
+fast = [
+  "numpy>=1.24",
+  "scipy>=1.10",
+  "mpmath>=1.3",
+]
+flint = [
+  "python-flint>=0.6",
+]
+
+[project.scripts]
+sinkhorn-eliminant = "sinkhorn_eliminant.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["sinkhorn_eliminant*"]
