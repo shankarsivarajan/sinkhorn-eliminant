@@ -2,7 +2,7 @@
 
 **`sinkhorn-eliminant`** is a self-contained Python solver for exact Sinkhorn / Kruithof scaling of matrices and tensors, accompanying:
 
-> Shankar Sivarajan, *An explicit determinantal formula for Sinkhorn limits of matrices and tensors*, [HexagonMath `2611.00433`](https://hexagonmath.org/2611.00433) (2026).
+> Shankar Sivarajan, *An explicit determinantal formula for Sinkhorn limits of matrices and tensors*, [hexagon:2611.00433](https://hexagonmath.org/2611.00433) (2026).
 
 ## Overview
 
@@ -115,3 +115,9 @@ python reproduce.py --examples-only --full-polys
 # Also runnable via stdlib unittest
 python -m unittest -v reproduce.py
 ```
+
+## Related
+
+The case of two-way margins with a binary variable ($2\times J\times K$ tables under the no-three-way-interaction model) is treated in the companion repository [`ipf-binary-eliminant`](https://github.com/shankarsivarajan/ipf-binary-eliminant) and the paper
+
+> Shankar Sivarajan, *An explicit determinantal formula for limits of iterative proportional fitting with a binary variable*, [hexagon:2611.00705](https://hexagonmath.org/2611.00705) (2026).
