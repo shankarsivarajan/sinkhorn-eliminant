@@ -98,13 +98,14 @@ python -m sinkhorn_eliminant --tensor '[[1,2],[3,4]]' --sinkhorn --poly-only --j
 | §4, Prop 4.4–Thm 4.6: Face discriminants, content $c(T)$, $\tilde E_T(x)$                                                 | [`discriminants.py`](sinkhorn_eliminant/discriminants.py) | `face_discriminant`, `cayley_hyperdeterminant`, `theorem46_factors`                                      |
 | §5, Thm 5.3–Prop 5.4: Matrix diagonal form $F(x) = \det(\mathrm{diag}\,\hat{\Gamma} + x\,\mathrm{diag}\,\hat{\Delta}\,Q)$ | [`matrix_pencil.py`](sinkhorn_eliminant/matrix_pencil.py) | `build_matrix_pencil`, `matrix_diagonal_polynomial`                                                      |
 | §3 & §6, Cor 3.3, Thm 3.4, Prop 6.1: Roots, null-vector recovery, positivity selection            | [`solver.py`](sinkhorn_eliminant/solver.py)               | `solve_scaling`, `recover_solution`, `find_polynomial_roots`, `solve_pencil_numerical`, `sinkhorn_scale` |
+| §7, Example A.5: Tensors with zero entries (needs `sympy`, `numpy`)                               | [`zeros.py`](sinkhorn_eliminant/zeros.py)                 | `example_a5`                                                                                             |
 
-Note on degenerate cases (Remark 4.7): if a face of $T$ avoiding the corner has vanishing discriminant (e.g., a $3\times 3$ matrix with a vanishing $2\times 2$ minor in rows $\{2,3\}$ and columns $\{2,3\}$), then $c(T) = 0$ and $\det \Phi(x) \equiv 0$. For matrices, `matrix_diagonal_polynomial` avoids $c(T)$ and still returns the true eliminant.
+Note on degenerate cases (Remark 4.7): if a face of $T$ avoiding the corner has vanishing discriminant (e.g., a $3\times 3$ matrix with a vanishing $2\times 2$ minor in rows $\{2,3\}$ and columns $\{2,3\}$), then $c(T) = 0$ and $\det \Phi(x) \equiv 0$. For matrices, `matrix_diagonal_polynomial` avoids $c(T)$ and still returns the true eliminant. Tensors with zero entries also give $\det \Phi(x) \equiv 0$; their eliminant is the resultant $R_S$ of Section 7, which the core package does not compute (see `zeros.py` for Example A.5).
 
 ## Reproducing Paper Results
 
 ```bash
-# Reproduce Appendix A (Examples A.1-A.4), Rowland-Wu Example 13, Kruithof (1937),
+# Reproduce Appendix A (Examples A.1-A.5; A.5 needs sympy and numpy), Rowland-Wu Example 13, Kruithof (1937),
 # and the paper's theorem/remark identities
 python reproduce.py
 
