@@ -694,7 +694,7 @@ def recover_solution(
             ]
             ev_dec = _null_vector_complete_pivot_decimal(M_dec)
             u_dec = _extract_scalings_from_nullvec(dims, rows_monos, idx_map, ev_dec)
-            P_raw_d = {c: T_dec[c] * prod((u_dec[k][c[k] - 1] for k in range(len(dims))), Decimal(1)) for c in cells}
+            P_raw_d = {c: T_dec[c] * prod((u_dec[k][c[k] - 1] for k in range(len(dims))), start=Decimal(1)) for c in cells}
             s_d = sum(P_raw_d.values(), Decimal(0))
             if s_d != 0:
                 scale_d = tot_dec / s_d
@@ -838,6 +838,7 @@ def solve_scaling(
     hp_roots.sort(key=lambda pair: (pair[1] != 0, pair[0], pair[1]))
 
     solutions: list[ScalingSolution] = []
+    roots_used: list[Any] = []
     for zr, zi in hp_roots:
         is_real = zi == 0
         if not recover_all:
@@ -849,11 +850,15 @@ def solve_scaling(
         x_arg: Any = zr if is_real else complex(float(zr), float(zi))
         sol = recover_solution(T, margins, x_arg, entry=entry, dps=dps)
         solutions.append(sol)
+        roots_used.append(x_arg)
 
-    pos_sols = [s for s in solutions if s.positive]
-    if not pos_sols:
+    pos = [i for i, s in enumerate(solutions) if s.positive]
+    if not pos:
         raise RuntimeError("No positive scaling solution found among the polynomial roots.")
-    limit_sol = pos_sols[0]
+    # The float null vector is accurate only to about 1e-11 for larger Sylvester matrices; recover the limit
+    # itself from the high-precision root with a high-precision null vector.
+    limit_sol = recover_solution(T, margins, roots_used[pos[0]], entry=entry, dps=dps, high_precision=True)
+    solutions[pos[0]] = limit_sol
 
     sink_P = None
     sink_diff = None

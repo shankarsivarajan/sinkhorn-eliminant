@@ -1,0 +1,146 @@
+==============================================================================
+Appendix A.1: 3x3 matrix (Rowland-Wu Example 1)
+Format: 3x3, expected degree N = 6, actual degree = 6, Sylvester size = 30
+Primitive E(x) = 374752*x^6 - 220388*x^5 - 844359*x^4 - 125796*x^3 + 210897*x^2 + 14346*x - 12312
+Theorem 4.6 E_tilde(x) = 30354912*x^6 - 17851428*x^5 - 68393079*x^4 - 10189476*x^3 + 17082657*x^2 + 1162026*x - 997272
+Matrix diagonal pencil F(x) primitive == E(x): True
+Limit P[(0, 0)] = 0.2766771162  (max |P* - Sinkhorn| = 1.81e-14)
+  root    -0.7859741748  feas=False  pos_nv=False  signs=(-,+,+) (+,-,+)  res=3.7e-13
+  root     -0.776536063  feas=False  pos_nv=False  signs=(-,-,+) (+,-,-)  res=5.3e-14
+  root    -0.3038869398  feas=False  pos_nv=False  signs=(-,-,+) (+,-,-)  res=6.0e-15
+  root     0.2766771162  feas=True   pos_nv=True   signs=(+,+,+) (+,+,+)  res=5.0e-59  <-- LIMIT
+  root     0.3503294291  feas=True   pos_nv=False  signs=(+,-,+) (+,+,-)  res=1.6e-14
+  root      1.827480889  feas=False  pos_nv=False  signs=(+,-,-) (+,+,-)  res=2.0e-15
+==============================================================================
+Appendix A.2: 2x2x3 tensor, general margins (N = 12)
+Format: 2x2x3, expected degree N = 12, actual degree = 12, Sylvester size = 60
+Primitive E(x) = 20074973373350*x^12 + 53389885428110*x^11 - 2306980014957096*x^10 - 57214015097855661*x^9 + 154172500895673992*x^8 + 3810188817211220108*x^7 - 99043782253996579776*x^6 + 1477902261835913643072*x^5 - 5215657743391506808320*x^4 + 7523658112880400906240*x^3 - 5110019789591931863040*x^2 + 1612752077450277421056*x - 187394173677836697600
+Theorem 4.6 E_tilde(x) = -1480087636870348800*x^12 - 3936329472843694080*x^11 + 170089022542756773888*x^10 + 4218274905134702174208*x^9 - 11366830146036252082176*x^8 - 280917601115348836122624*x^7 + 7302299978022659833724928*x^6 - 108962777960638241076412416*x^5 + 384540014104769013963816960*x^4 - 554704265346446198015262720*x^3 + 376751539047033952398213120*x^2 - 118904985166254053699616768*x + 13816197636919544040652800
+Limit P[(0, 0, 0)] = 0.5715181134  (max |P* - Sinkhorn| = 2.13e-14)
+  root     -14.79904486  feas=False  pos_nv=False  signs=(-,-) (+,-) (+,+,-)  res=1.6e-12
+  root     0.2885708706  feas=True   pos_nv=False  signs=(+,-) (+,-) (+,-,+)  res=4.4e-12
+  root     0.5554305597  feas=True   pos_nv=False  signs=(+,-) (+,-) (+,-,+)  res=6.1e-12
+  root     0.5715181134  feas=True   pos_nv=True   signs=(+,+) (+,+) (+,+,+)  res=4.7e-56  <-- LIMIT
+  root      1.058504652  feas=True   pos_nv=False  signs=(+,-) (+,-) (+,-,+)  res=1.4e-13
+  root      1.751282005  feas=True   pos_nv=False  signs=(+,-) (+,-) (+,-,+)  res=6.0e-13
+  root       10.2063354  feas=False  pos_nv=False  signs=(+,-) (+,-) (+,-,+)  res=1.2e-14
+  root      13.98321693  feas=False  pos_nv=False  signs=(+,-) (+,-) (+,-,-)  res=9.4e-14
+  root   -10.41457216   -12.96393243i
+  root   -10.41457216   +12.96393243i
+  root    2.276903026   -9.430689749i
+  root    2.276903026   +9.430689749i
+==============================================================================
+Appendix A.3: 4x4 matrix, general margins (N = 20)
+Format: 4x4, expected degree N = 20, actual degree = 20, Sylvester size = 140
+Primitive E(x): degree 20, max |coeff| ~ 10^35 (pass --full-polys for all coefficients)
+Matrix diagonal pencil F(x) primitive == E(x): True
+Limit P[(0, 0)] = 0.0570230027  (max |P* - Sinkhorn| = 3.11e-14)
+  root      -104.775389  feas=False  pos_nv=False  signs=(-,+,+,-) (+,+,-,+)  res=1.5e-11
+  root     -45.12256856  feas=False  pos_nv=False  signs=(-,+,+,+) (+,+,-,+)  res=2.0e-12
+  root     -28.13373429  feas=False  pos_nv=False  signs=(-,+,+,-) (+,+,-,-)  res=1.8e-12
+  root      -18.3745109  feas=False  pos_nv=False  signs=(-,+,-,-) (+,-,-,-)  res=2.3e-12
+  root     -14.68805215  feas=False  pos_nv=False  signs=(-,+,+,+) (+,+,-,-)  res=3.2e-12
+  root    -0.7717863695  feas=False  pos_nv=False  signs=(-,+,+,+) (+,+,-,-)  res=3.1e-11
+  root    -0.2556357519  feas=False  pos_nv=False  signs=(-,+,+,-) (+,+,+,-)  res=8.4e-11
+  root    0.01731304145  feas=True   pos_nv=False  signs=(+,+,-,-) (+,-,+,+)  res=1.2e-10
+  root    0.04413940135  feas=True   pos_nv=False  signs=(+,+,-,+) (+,-,+,+)  res=1.5e-10
+  root    0.05702300275  feas=True   pos_nv=True   signs=(+,+,+,+) (+,+,+,+)  res=7.9e-55  <-- LIMIT
+  root    0.09535084645  feas=True   pos_nv=False  signs=(+,+,-,-) (+,-,+,-)  res=6.3e-11
+  root     0.2014801225  feas=True   pos_nv=False  signs=(+,+,-,+) (+,-,+,-)  res=9.4e-12
+  root     0.2743580597  feas=True   pos_nv=False  signs=(+,+,+,-) (+,+,+,-)  res=1.7e-12
+  root     0.7484409356  feas=True   pos_nv=False  signs=(+,+,-,+) (+,-,+,-)  res=9.1e-12
+  root      1.697351246  feas=False  pos_nv=False  signs=(+,+,-,+) (+,-,+,+)  res=3.2e-12
+  root      2.323277423  feas=False  pos_nv=False  signs=(+,+,+,-) (+,-,-,-)  res=6.5e-13
+  root      3.080058156  feas=False  pos_nv=False  signs=(+,+,-,-) (+,-,-,-)  res=7.6e-13
+  root      99.97943906  feas=False  pos_nv=False  signs=(+,-,+,-) (+,-,-,+)  res=7.5e-12
+  root   -0.713920734  -0.2868301405i
+  root   -0.713920734  +0.2868301405i
+==============================================================================
+Appendix A.4: Degenerate 2x2x2 tensor (degree drops 6 -> 5)
+Format: 2x2x2, expected degree N = 6, actual degree = 5, Sylvester size = 24
+Primitive E(x) = 256*x^5 + 4446*x^4 + 24384*x^3 + 52699*x^2 + 33936*x - 12096
+Theorem 4.6 E_tilde(x) = -8192*x^5 - 142272*x^4 - 780288*x^3 - 1686368*x^2 - 1085952*x + 387072
+Limit P[(0, 0, 0)] = 0.2487655058  (max |P* - Sinkhorn| = 1.33e-15)
+  root      -9.39530547  feas=False  pos_nv=False  signs=(-,+) (+,-) (+,-)  res=5.6e-14
+  root     -3.082353684  feas=False  pos_nv=False  signs=(-,+) (+,-) (+,+)  res=4.1e-13
+  root     -2.773617481  feas=False  pos_nv=False  signs=(-,+) (+,+) (+,-)  res=9.8e-12
+  root     -2.364676371  feas=False  pos_nv=False  signs=(-,-) (+,-) (+,-)  res=5.6e-13
+  root     0.2487655058  feas=True   pos_nv=True   signs=(+,+) (+,+) (+,+)  res=7.0e-59  <-- LIMIT
+==============================================================================
+Appendix A.5: 3x3 matrix with zero entries t_23 = t_32 = 0 (Section 7)
+R_S(x) = 2303*x**4 + 777*x**3 - 2724*x**2 - 1152*x + 288
+root 0.1796661932  s1=(+,+,+) s2=(+,+,+)
+root 1.0829221484  s1=(+,+,-) s2=(+,+,-)
+root -0.7999871799 -0.0525352130i
+root -0.7999871799 +0.0525352130i
+Sinkhorn limit:
+ [[0.17967 0.58161 0.23873]
+ [0.58161 0.41839 0.     ]
+ [0.23873 0.      0.76127]]
+size 30 corank 2
+degrees [6, 6, 6]  gcd == R_S: True
+[ok] Example A.5 verified.
+==============================================================================
+Rowland-Wu Example 13: 4x4 doubly stochastic (N = 20)
+Format: 4x4, expected degree N = 20, actual degree = 20, Sylvester size = 140
+Primitive E(x): degree 20, max |coeff| ~ 10^16 (pass --full-polys for all coefficients)
+Matrix diagonal pencil F(x) primitive == E(x): True
+Limit P[(0, 0)] = 0.4134631954  (max |P* - Sinkhorn| = 2.94e-15)
+  root      -0.56013788  feas=False  pos_nv=False  signs=(-,+,-,-) (+,+,+,-)  res=1.4e-13
+  root     0.4134631954  feas=True   pos_nv=True   signs=(+,+,+,+) (+,+,+,+)  res=2.5e-57  <-- LIMIT
+  root      0.835281894  feas=True   pos_nv=False  signs=(+,+,+,-) (+,-,+,-)  res=5.5e-13
+  root     0.8685193279  feas=True   pos_nv=False  signs=(+,+,-,+) (+,+,-,+)  res=3.7e-13
+  root      1.307862752  feas=False  pos_nv=False  signs=(+,-,-,-) (+,-,+,+)  res=4.4e-14
+  root      1.599294096  feas=False  pos_nv=False  signs=(+,+,-,-) (+,-,-,-)  res=3.1e-14
+  root      2.873427162  feas=False  pos_nv=False  signs=(+,+,-,+) (+,+,-,-)  res=8.9e-13
+  root      10.29260656  feas=False  pos_nv=False  signs=(+,-,-,+) (+,+,-,+)  res=1.4e-13
+  root   0.3925419521  -0.4945603259i
+  root   0.3925419521  +0.4945603259i
+  root   0.5675255426   -0.708938499i
+  root   0.5675255426   +0.708938499i
+  root   0.7728999824  -0.9309571122i
+  root   0.7728999824  +0.9309571122i
+  root    1.337022549  -0.1091740153i
+  root    1.337022549  +0.1091740153i
+  root    1.765374748   -0.467987818i
+  root    1.765374748   +0.467987818i
+  root    2.460169642   -3.279713868i
+  root    2.460169642   +3.279713868i
+==============================================================================
+Kruithof (1937) / Rowland-Wu Example 32: 4x4 traffic matrix (N = 20)
+Format: 4x4, expected degree N = 20, actual degree = 20, Sylvester size = 140
+Primitive E(x): degree 20, max |coeff| ~ 10^137 (pass --full-polys for all coefficients)
+Matrix diagonal pencil F(x) primitive == E(x): True
+Limit P[(0, 0)] = 3246.3870023418  (max |P* - Sinkhorn| = 9.09e-13)
+  root      3246.387002  feas=True   pos_nv=True   signs=(+,+,+,+) (+,+,+,+)  res=5.5e-52  <-- LIMIT
+  root        6232.8813  feas=False  pos_nv=False  signs=(+,+,+,-) (+,+,+,-)  res=1.2e-08
+  root      9600.634687  feas=False  pos_nv=False  signs=(+,+,-,+) (+,+,-,+)  res=9.8e-10
+  root      12064.72046  feas=False  pos_nv=False  signs=(+,+,-,-) (+,+,-,-)  res=1.6e-08
+  root      12736.02899  feas=False  pos_nv=False  signs=(+,-,+,+) (+,-,+,+)  res=2.2e-08
+  root      15681.85638  feas=False  pos_nv=False  signs=(+,-,+,-) (+,-,+,-)  res=7.9e-08
+  root      19334.67856  feas=False  pos_nv=False  signs=(+,-,+,-) (+,-,+,-)  res=5.9e-09
+  root      20626.44806  feas=False  pos_nv=False  signs=(+,-,-,+) (+,-,-,+)  res=1.3e-07
+  root      26109.60806  feas=False  pos_nv=False  signs=(+,-,-,-) (+,-,-,-)  res=1.5e-08
+  root      26625.97373  feas=False  pos_nv=False  signs=(+,-,+,-) (+,-,+,-)  res=2.3e-08
+  root    11186.73984   -118.8742954i
+  root    11186.73984   +118.8742954i
+  root     16155.3818   -753.2693939i
+  root     16155.3818   +753.2693939i
+  root    16271.25723   -282.9957891i
+  root    16271.25723   +282.9957891i
+  root    17052.15247   -343.1898058i
+  root    17052.15247   +343.1898058i
+  root    17063.83715   -2085.120936i
+  root    17063.83715   +2085.120936i
+==============================================================================
+Mathematical identities & structural checks
+[ok] Theorem 5.3 & Proposition 5.4: matrix diagonal pencil F(x) and det(Q) verified on 2x2..4x4.
+[ok] Remark 4.7: Sylvester R(x)===0, matrix diagonal recovers degree-6 eliminant.
+[ok] Proposition 4.5: constant term R(0) matches restricted slab resultant product.
+[ok] Arbitrary entry (1, 0, 2): P*[(1, 0, 2)] = 1.6062362826 matches Sinkhorn.
+[ok] Multidegree invariance: all 6 mode permutations yield identical primitive E(x).
+[ok] Exact rational inputs & scaling invariance verified on 2x3 Fraction matrix.
+[ok] Higher-order tensors: 2x2x2x2 (deg 24) and 2x3x3 (deg 30, Thm 4.6) verified.
+[ok] Root finder (zero/repeated roots) and CLI --json output verified.
+==============================================================================
+All 15 paper companion checks completed successfully.

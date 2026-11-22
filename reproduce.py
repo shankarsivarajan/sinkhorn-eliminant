@@ -6,6 +6,7 @@
 Run from the repository root:
     python reproduce.py                 # full companion report + identity checks
     python reproduce.py --examples-only # Appendix A, RW Ex. 13, and Kruithof 1937
+    (Appendix A.5 needs sympy and numpy and is skipped without them)
     python -m unittest -v reproduce.py  # standard unittest runner
 """
 
@@ -167,6 +168,20 @@ def run_appendix_a4_degenerate_2x2x2(*, verbose: bool = True, full_polys: bool =
     assert res.sinkhorn_diff < 1e-12
     if verbose:
         _print_example_summary("Appendix A.4: Degenerate 2x2x2 tensor (degree drops 6 -> 5)", res, full_polys=full_polys)
+
+
+def run_appendix_a5_zeros(*, verbose: bool = True, full_polys: bool = False) -> None:
+    """Appendix A.5 / Section 7: 3x3 matrix with zero entries (needs sympy and numpy)."""
+    try:
+        from sinkhorn_eliminant.zeros import example_a5
+    except ImportError as exc:
+        if verbose:
+            print(f"[skip] Appendix A.5 needs sympy and numpy ({exc}).")
+        raise unittest.SkipTest("sympy and numpy are required for Appendix A.5") from exc
+    if verbose:
+        print("=" * 78)
+        print("Appendix A.5: 3x3 matrix with zero entries t_23 = t_32 = 0 (Section 7)")
+    example_a5(verbose=verbose)
 
 
 def run_rw_example_13(*, verbose: bool = True, full_polys: bool = False) -> None:
@@ -409,6 +424,9 @@ class PaperCompanionSuite(unittest.TestCase):
     def test_appendix_a4_degenerate_2x2x2(self):
         run_appendix_a4_degenerate_2x2x2(verbose=False)
 
+    def test_appendix_a5_zeros(self):
+        run_appendix_a5_zeros(verbose=False)
+
     def test_rw_example_13(self):
         run_rw_example_13(verbose=False)
 
@@ -447,7 +465,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--examples-only",
         action="store_true",
-        help="Run only the worked examples (Appendix A.1-A.4, RW Ex. 13, Kruithof 1937).",
+        help="Run only the worked examples (Appendix A.1-A.5, RW Ex. 13, Kruithof 1937).",
     )
     parser.add_argument(
         "--full-polys",
@@ -461,6 +479,7 @@ def main(argv: list[str] | None = None) -> int:
         run_appendix_a2_2x2x3,
         run_appendix_a3_4x4,
         run_appendix_a4_degenerate_2x2x2,
+        run_appendix_a5_zeros,
         run_rw_example_13,
         run_kruithof_1937_rw32,
     ]
@@ -476,7 +495,10 @@ def main(argv: list[str] | None = None) -> int:
     ]
 
     for fn in examples:
-        fn(verbose=True, full_polys=args.full_polys)
+        try:
+            fn(verbose=True, full_polys=args.full_polys)
+        except unittest.SkipTest:
+            pass
 
     if not args.examples_only:
         print("=" * 78)
